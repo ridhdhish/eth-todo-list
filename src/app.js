@@ -93,6 +93,13 @@ const App = {
     }
   },
 
+  createTask: async () => {
+    App.setLoading(true);
+    const content = $("#newTask").val();
+    await App.todoList.createTask(content, { from: App.account });
+    window.location.reload();
+  },
+
   toggleCompleted: async (e) => {
     App.setLoading(true);
     const taskId = e.target.name;
